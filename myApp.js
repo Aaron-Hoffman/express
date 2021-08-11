@@ -8,8 +8,6 @@ console.log('Hello World');
 const indexPath = __dirname + '/views/index.html' 
 //  absolute path for public folder
 const publicPath = __dirname + '/public'
-//  json response object 
-const jsonResponse = {"message": "Hello json"}
 
 // allows access to public folder
 app.use("/public", express.static(publicPath));
@@ -19,8 +17,14 @@ app.get('/', function(req, res) {
     res.sendFile(indexPath);
 })
 
-//  Serves json response object to get requests at /json path
+//  Serves json response object to get requests at /json endpoint
 app.get('/json', function(req, res) {
+    //  set json response object based on MESSAGE STYLE .env variable
+    if (process.env.MESSAGE_STYLE === "uppercase") {
+        const jsonResponse = {"message": "HELLO JSON"}
+    } else {
+        const jsonResponse = {"message": "Hello json"}
+    }
     res.json(jsonResponse);
 })
 
