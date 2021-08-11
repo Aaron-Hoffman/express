@@ -15,7 +15,7 @@ app.use("/public", express.static(publicPath));
 
 // logs all requests
 app.use(function(req, res, next) {
-    console.log(`{req.method} {req.path} - {req.ip}`);
+    console.log(`${req.method} ${req.path} - ${req.ip}`);
     next();
 })
 
