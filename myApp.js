@@ -4,9 +4,12 @@ var app = express();
 
 console.log('Hello World');
 
-//  Serves string to get requests to the root directory
+// absolute path for index.html
+const absolutePath = __dirname + '/views/index.html' 
+
+//  Serves index.html to get requests to the root directory
 app.get('/', function(req, res) {
-    res.send('Hello Express');
+    res.sendFile(absolutePath);
 })
 
 
