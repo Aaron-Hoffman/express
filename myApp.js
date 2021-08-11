@@ -9,8 +9,17 @@ const indexPath = __dirname + "/views/index.html";
 //  absolute path for public folder
 const publicPath = __dirname + "/public";
 
+// middleware
 // allows access to public folder
 app.use("/public", express.static(publicPath));
+
+// logs all requests
+app.use(function(req, res, next) {
+    console.log(`{req.method} {req.path} - {req.ip}`);
+    next();
+})
+
+// routes 
 
 //  Serves index.html to get requests to the root directory
 app.get("/", function(req, res) {
