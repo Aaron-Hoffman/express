@@ -1,4 +1,5 @@
 var express = require("express");
+var bodyParser = require("body-parser");
 //  Creates express app object
 var app = express();
 
@@ -12,6 +13,9 @@ const publicPath = __dirname + "/public";
 // middleware
 // allows access to public folder
 app.use("/public", express.static(publicPath));
+
+//  urlencoder
+app.use(bodyParser.urlencoded({extended: false}));
 
 // logs all requests
 app.use(function(req, res, next) {
