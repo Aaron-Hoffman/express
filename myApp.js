@@ -55,8 +55,8 @@ app.get('/:word/echo', function(req, res) {
 })
 
 // query string practice
-app.get('/name', function(req, res) {
-    res.json({name: `${req.query.firstname} ${req.query.lastname}`});
+app.route('/name').get(function(req, res) {
+    res.json({name: `${req.query.first} ${req.query.last}`});
 })
 
 module.exports = app;
